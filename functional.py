@@ -44,30 +44,20 @@ def handle_msg(event):
 
 
 def question(chat_id, text):
-    if 'как' in text:
-        msg = 'никак, отъебись со своими вопросами'
-        write_msg(chat_id=chat_id, message=msg)
-    if 'кто' in text:
-        msg = 'хуй в пальто, отъебись блять'
-        write_msg(chat_id=chat_id, message=msg)
-    if 'где' in text:
-        msg = 'в пизде, заебал со своими вопросами уже'
-        write_msg(chat_id=chat_id, message=msg)
-    if 'когда' in text:
-        msg = 'когда рак на горе свиснет, ебнуться от твоих вопросов можно'
-        write_msg(chat_id=chat_id, message=msg)
-    if 'зачем' in text:
-        msg = 'меня уже заебало писать логику, а тебя не заебало вопросы писать??'
-        write_msg(chat_id=chat_id, message=msg)
-    if 'почему' in text:
-        msg = 'потому что ты тупой, как и твои вопросы блядские'
-        write_msg(chat_id=chat_id, message=msg)
-    if 'откуда' in text:
-        msg = 'санджар залезь туда, откуда вылез'
-        write_msg(chat_id=chat_id, message=msg)
-    else:
-        msg = 'санджар как же ты доебал со своими вопросами блядскими'
-        write_msg(chat_id=chat_id, message=msg)
+    _questions = ['как', 'кто', 'где', 'когда', 'зачем', 'почему', 'откуда']
+    answers = {
+        'как': 'никак, отъебись со своими вопросами',
+        'кто': 'хуй в пальто, отъебись блять',
+        'где': 'в пизде, заебал со своими вопросами уже',
+        'когда': 'когда рак на горе свиснет, ебнуться от твоих вопросов можно',
+        'зачем': 'меня уже заебало писать логику, а тебя не заебало вопросы писать??',
+        'почему': 'потому что ты тупой, как и твои вопросы блядские',
+        'откуда': 'санджар залезь туда, откуда вылез'
+    }
+
+    for q in _questions:
+        if q in text:
+            write_msg(chat_id=chat_id, message=answers[q])
 
 
 def sar_mentioned(chat_id):
@@ -84,4 +74,3 @@ def dikiy_dog_mentioned(text):
         if any([nick in text for nick in dikiy_dog_names.get(name)]):
             return True
     return False
-
