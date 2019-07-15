@@ -44,7 +44,6 @@ def handle_msg(event):
 
 
 def question(chat_id, text):
-    _questions = ['как', 'кто', 'где', 'когда', 'зачем', 'почему', 'откуда']
     answers = {
         'как': 'никак, отъебись со своими вопросами',
         'кто': 'хуй в пальто, отъебись блять',
@@ -55,7 +54,7 @@ def question(chat_id, text):
         'откуда': 'санджар залезь туда, откуда вылез'
     }
 
-    for q in _questions:
+    for q in answers:
         if q in text:
             write_msg(chat_id=chat_id, message=answers[q])
 
